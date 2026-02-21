@@ -1,0 +1,15 @@
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/repository/EarthquakeJdbcRepository.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/model/User.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/repository/UserRepository.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/repository/CsvRepository.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/util/CsvParser.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/repository/EarthquakeJpaRepository.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/EarthquakesApplication.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/repository/CommonRepository.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/service/EarthquakesJpaService.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/service/EarthquakesService.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/service/UserDetailsServiceImpl.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/config/DataInitializer.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/controller/EarthquakeController.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/config/SecurityConfig.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/earthquakes/model/Earthquake.java
