@@ -1,7 +1,7 @@
-/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/earthquakes/service/EarthquakesServiceTest.java
-/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/earthquakes/config/TestJpaConfig.java
-/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/earthquakes/controller/EarthquakeControllerCsvTest.java
-/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/earthquakes/controller/EarthquakeControllerJpaTest.java
-/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/earthquakes/config/TestConfig.java
-/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/earthquakes/config/TestSecurityConfig.java
-/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/earthquakes/service/EarthquakesJpaServiceTest.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/sportstats/service/PlayerJpaServiceTest.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/sportstats/controller/PlayerControllerCsvTest.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/sportstats/config/TestSecurityConfig.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/sportstats/config/TestConfig.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/sportstats/controller/PlayerControllerJpaTest.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/sportstats/config/TestJpaConfig.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/test/java/com/example/sportstats/service/PlayerServiceTest.java

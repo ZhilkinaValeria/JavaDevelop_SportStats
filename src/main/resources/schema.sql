@@ -1,12 +1,11 @@
-CREATE TABLE IF NOT EXISTS earthquakes (
-    id VARCHAR(50) PRIMARY KEY,
-    time TIMESTAMP,
-    latitude DOUBLE,
-    longitude DOUBLE,
-    depth DOUBLE,
-    magnitude DOUBLE,
-    place VARCHAR(255),
-    magnitude_type VARCHAR(10)
+CREATE TABLE IF NOT EXISTS players (
+    id VARCHAR(100) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    team VARCHAR(10) NOT NULL,
+    position VARCHAR(50),
+    height_inches INTEGER,
+    weight_lbs INTEGER,
+    age DOUBLE
 );
 
 CREATE TABLE IF NOT EXISTS users (
