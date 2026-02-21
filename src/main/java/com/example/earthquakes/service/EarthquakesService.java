@@ -2,12 +2,13 @@ package com.example.earthquakes.service;
 
 import com.example.earthquakes.model.Earthquake;
 import com.example.earthquakes.repository.CommonRepository;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,21 +17,21 @@ public class EarthquakesService {
     
     protected CommonRepository<Earthquake> repository;
     
-    public EarthquakesService(
-            @Qualifier("CsvRepository") CommonRepository<Earthquake> csvRepo,
-            @Qualifier("EarthquakeJdbcRepository") CommonRepository<Earthquake> jdbcRepo) {
-        // Репозиторий будет выбран через профили
-        this.repository = csvRepo; // По умолчанию, переопределяется через init
+    // Основной конструктор для Spring
+    @Autowired
+    public EarthquakesService(CommonRepository<Earthquake> repository) {
+        this.repository = repository;
     }
     
-    void init(CommonRepository<Earthquake> repository) {
-        if (repository != null) {
-            this.repository = repository;
-        }
+    // Конструктор для тестов (опционально)
+    protected EarthquakesService() {
+        // для наследования
     }
     
     public List<Earthquake> getAll() {
-        return (List<Earthquake>) repository.findAll();
+        List<Earthquake> result = new ArrayList<>();
+        repository.findAll().forEach(result::add);
+        return result;
     }
     
     public Earthquake getById(String id) {
@@ -66,7 +67,7 @@ public class EarthquakesService {
     }
     
     public Double avgMagnitude() {
-        List<Earthquake> earthquakes = (List<Earthquake>) repository.findAll();
+        List<Earthquake> earthquakes = getAll();
         return earthquakes.stream()
                 .mapToDouble(Earthquake::getMagnitude)
                 .average()

@@ -1,0 +1,9 @@
+com/example/earthquakes/config/TestConfig.class
+com/example/earthquakes/service/EarthquakesJpaServiceTest.class
+com/example/earthquakes/config/TestSecurityConfig.class
+com/example/earthquakes/service/EarthquakesServiceTest.class
+com/example/earthquakes/config/TestConfig$TestEarthquakeRepository.class
+com/example/earthquakes/controller/EarthquakeControllerJpaTest.class
+com/example/earthquakes/config/TestJpaConfig$1.class
+com/example/earthquakes/config/TestJpaConfig.class
+com/example/earthquakes/controller/EarthquakeControllerCsvTest.class

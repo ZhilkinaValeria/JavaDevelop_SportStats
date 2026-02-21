@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.earthquakes.service.EarthquakesServiceTest" time="3.375" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.earthquakes.controller.EarthquakeControllerJpaTest" time="6.54" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -48,7 +48,6 @@
     <property name="localRepository" value="/Users/Andrei/.m2/repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="/var/folders/rt/zsjys7tj16g1l6n_3ssp8w2h0000gq/T/"/>
-    <property name="com.zaxxer.hikari.pool_number" value="1"/>
     <property name="java.version" value="25.0.1"/>
     <property name="user.dir" value="/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject"/>
     <property name="os.arch" value="x86_64"/>
@@ -66,9 +65,10 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="avgMagnitude_ShouldCalculateAverage" classname="com.example.earthquakes.service.EarthquakesServiceTest" time="0.018">
-    <system-out><![CDATA[2026-02-21T20:31:23.476+03:00  INFO 1172 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.earthquakes.service.EarthquakesServiceTest]: EarthquakesServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-02-21T20:31:23.493+03:00  INFO 1172 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.earthquakes.EarthquakesApplication for test class com.example.earthquakes.service.EarthquakesServiceTest
+  <testcase name="create_WithUserRole_ShouldReturnForbidden" classname="com.example.earthquakes.controller.EarthquakeControllerJpaTest" time="0.322">
+    <system-out><![CDATA[Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+20:31:16.250 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.earthquakes.controller.EarthquakeControllerJpaTest]: EarthquakeControllerJpaTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+20:31:16.552 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.earthquakes.EarthquakesApplication for test class com.example.earthquakes.controller.EarthquakeControllerJpaTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -78,84 +78,74 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.1.5)
 
-2026-02-21T20:31:23.536+03:00  INFO 1172 --- [           main] c.e.e.service.EarthquakesServiceTest     : Starting EarthquakesServiceTest using Java 25.0.1 with PID 1172 (started by Andrei in /Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject)
-2026-02-21T20:31:23.537+03:00  INFO 1172 --- [           main] c.e.e.service.EarthquakesServiceTest     : The following 1 profile is active: "test"
-2026-02-21T20:31:23.834+03:00  INFO 1172 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-02-21T20:31:23.882+03:00  INFO 1172 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interfaces.
-2026-02-21T20:31:24.139+03:00  INFO 1172 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-02-21T20:31:24.268+03:00  INFO 1172 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-02-21T20:31:24.269+03:00  INFO 1172 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-02-21T20:31:24.417+03:00  INFO 1172 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-02-21T20:31:24.463+03:00  INFO 1172 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
-2026-02-21T20:31:24.464+03:00  INFO 1172 --- [           main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2026-02-21T20:31:24.557+03:00  INFO 1172 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-02-21T20:31:24.590+03:00  WARN 1172 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-02-21T20:31:25.521+03:00  INFO 1172 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-Hibernate: drop table if exists authorities cascade 
-Hibernate: drop table if exists earthquakes cascade 
-Hibernate: drop table if exists users cascade 
-Hibernate: create table authorities (authority varchar(255), username varchar(255) not null)
-Hibernate: create table earthquakes (depth float(53), latitude float(53), longitude float(53), magnitude float(53), time timestamp(6), id varchar(255) not null, magnitude_type varchar(255), place varchar(255), primary key (id))
-Hibernate: create table users (enabled boolean not null, id bigint generated by default as identity, password varchar(255) not null, username varchar(255) not null unique, primary key (id))
-2026-02-21T20:31:25.578+03:00  INFO 1172 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-02-21T20:31:26.277+03:00  WARN 1172 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-02-21T20:31:26.339+03:00  INFO 1172 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@24afdf18, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22b112bb, org.springframework.security.web.context.SecurityContextHolderFilter@42b4cce1, org.springframework.security.web.header.HeaderWriterFilter@37ddb835, org.springframework.security.web.authentication.logout.LogoutFilter@38cd7531, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@77984827, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@67f8586f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@63c6579, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@54e63f7c, org.springframework.security.web.access.ExceptionTranslationFilter@72426ced, org.springframework.security.web.access.intercept.AuthorizationFilter@7821d009]
-2026-02-21T20:31:26.791+03:00  INFO 1172 --- [           main] c.e.e.service.EarthquakesServiceTest     : Started EarthquakesServiceTest in 3.285 seconds (process running for 11.981)
-
-=== @BeforeEach - Reset repository to initial state ===
-Repository now contains 2 earthquakes:
-  - ID: 'test-2', Magnitude: 6.5
-  - ID: 'test-1', Magnitude: 5.5
-
-=== Running avgMagnitude_ShouldCalculateAverage ===
+2026-02-21T20:31:17.293+03:00  INFO 1172 --- [           main] c.e.e.c.EarthquakeControllerJpaTest      : Starting EarthquakeControllerJpaTest using Java 25.0.1 with PID 1172 (started by Andrei in /Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject)
+2026-02-21T20:31:17.297+03:00  INFO 1172 --- [           main] c.e.e.c.EarthquakeControllerJpaTest      : The following 2 profiles are active: "test", "test-jpa"
+2026-02-21T20:31:20.833+03:00  INFO 1172 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6ed18d80, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4c24f3a2, org.springframework.security.web.context.SecurityContextHolderFilter@2b79c8ff, org.springframework.security.web.header.HeaderWriterFilter@5c1b89ac, org.springframework.security.web.authentication.logout.LogoutFilter@2d70f312, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3030836d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@66756662, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@38cfecf3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@783b3aa0, org.springframework.security.web.access.ExceptionTranslationFilter@6e685e6c, org.springframework.security.web.access.intercept.AuthorizationFilter@5fe46d52]
+2026-02-21T20:31:21.873+03:00  INFO 1172 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-02-21T20:31:21.874+03:00  INFO 1172 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-02-21T20:31:21.878+03:00  INFO 1172 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+2026-02-21T20:31:21.926+03:00  INFO 1172 --- [           main] c.e.e.c.EarthquakeControllerJpaTest      : Started EarthquakeControllerJpaTest in 5.218 seconds (process running for 7.117)
+2026-02-21T20:31:22.076+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Created HttpSession as SecurityContext is non-default
+2026-02-21T20:31:22.077+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=user, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[ROLE_USER]]] to HttpSession [org.springframework.mock.web.MockHttpSession@632d4cf2]
+2026-02-21T20:31:22.083+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Securing POST /api/earthquakes
+2026-02-21T20:31:22.091+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=user, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[ROLE_USER]]]
+2026-02-21T20:31:22.092+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Secured POST /api/earthquakes
+2026-02-21T20:31:22.184+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.example.earthquakes.controller.EarthquakeController.create(com.example.earthquakes.model.Earthquake); target is of class [com.example.earthquakes.controller.EarthquakeController]
+2026-02-21T20:31:22.220+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Failed to authorize ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.example.earthquakes.controller.EarthquakeController.create(com.example.earthquakes.model.Earthquake); target is of class [com.example.earthquakes.controller.EarthquakeController] with authorization manager org.springframework.security.config.annotation.method.configuration.DeferringObservationAuthorizationManager@7b8b07ae and decision ExpressionAuthorizationDecision [granted=false, expressionAttribute=hasRole('ADMIN')]
+2026-02-21T20:31:22.223+03:00 DEBUG 1172 --- [           main] o.s.s.w.access.AccessDeniedHandlerImpl   : Responding with 403 status code
+]]></system-out>
+    <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/Andrei/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.18/byte-buddy-agent-1.14.18.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+  </testcase>
+  <testcase name="getAll_ShouldReturnList" classname="com.example.earthquakes.controller.EarthquakeControllerJpaTest" time="0.083">
+    <system-out><![CDATA[2026-02-21T20:31:22.316+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Created HttpSession as SecurityContext is non-default
+2026-02-21T20:31:22.317+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=user, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[ROLE_USER]]] to HttpSession [org.springframework.mock.web.MockHttpSession@38e46765]
+2026-02-21T20:31:22.317+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Securing GET /api/earthquakes
+2026-02-21T20:31:22.317+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=user, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[ROLE_USER]]]
+2026-02-21T20:31:22.318+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Secured GET /api/earthquakes
+2026-02-21T20:31:22.319+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public java.util.List com.example.earthquakes.controller.EarthquakeController.getAll(); target is of class [com.example.earthquakes.controller.EarthquakeController]
+2026-02-21T20:31:22.329+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public java.util.List com.example.earthquakes.controller.EarthquakeController.getAll(); target is of class [com.example.earthquakes.controller.EarthquakeController]
 ]]></system-out>
   </testcase>
-  <testcase name="create_ShouldAddNewEarthquake" classname="com.example.earthquakes.service.EarthquakesServiceTest" time="0.002">
-    <system-out><![CDATA[
-=== @BeforeEach - Reset repository to initial state ===
-Repository now contains 2 earthquakes:
-  - ID: 'test-2', Magnitude: 6.5
-  - ID: 'test-1', Magnitude: 5.5
-
-=== Running create_ShouldAddNewEarthquake ===
+  <testcase name="getById_WithUserRole_ShouldReturnEarthquake" classname="com.example.earthquakes.controller.EarthquakeControllerJpaTest" time="0.033">
+    <system-out><![CDATA[2026-02-21T20:31:22.390+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Created HttpSession as SecurityContext is non-default
+2026-02-21T20:31:22.391+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=user, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[ROLE_USER]]] to HttpSession [org.springframework.mock.web.MockHttpSession@1a66be41]
+2026-02-21T20:31:22.391+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Securing GET /api/earthquakes/1
+2026-02-21T20:31:22.392+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=user, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_USER]], Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[ROLE_USER]]]
+2026-02-21T20:31:22.392+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Secured GET /api/earthquakes/1
+2026-02-21T20:31:22.405+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public com.example.earthquakes.model.Earthquake com.example.earthquakes.controller.EarthquakeController.getById(java.lang.String); target is of class [com.example.earthquakes.controller.EarthquakeController]
+2026-02-21T20:31:22.406+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public com.example.earthquakes.model.Earthquake com.example.earthquakes.controller.EarthquakeController.getById(java.lang.String); target is of class [com.example.earthquakes.controller.EarthquakeController]
 ]]></system-out>
   </testcase>
-  <testcase name="delete_ShouldRemoveEarthquake" classname="com.example.earthquakes.service.EarthquakesServiceTest" time="0.003">
-    <system-out><![CDATA[
-=== @BeforeEach - Reset repository to initial state ===
-Repository now contains 2 earthquakes:
-  - ID: 'test-2', Magnitude: 6.5
-  - ID: 'test-1', Magnitude: 5.5
+  <testcase name="getAvgMagnitude_WithoutAuth_ShouldReturnAverage" classname="com.example.earthquakes.controller.EarthquakeControllerJpaTest" time="0.032">
+    <system-out><![CDATA[2026-02-21T20:31:22.426+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Securing GET /api/earthquakes/stats/avg-magnitude
+2026-02-21T20:31:22.427+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Secured GET /api/earthquakes/stats/avg-magnitude
+2026-02-21T20:31:22.428+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public java.lang.Double com.example.earthquakes.controller.EarthquakeController.getAvgMagnitude(); target is of class [com.example.earthquakes.controller.EarthquakeController]
+2026-02-21T20:31:22.430+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public java.lang.Double com.example.earthquakes.controller.EarthquakeController.getAvgMagnitude(); target is of class [com.example.earthquakes.controller.EarthquakeController]
+2026-02-21T20:31:22.444+03:00 DEBUG 1172 --- [           main] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
 ]]></system-out>
   </testcase>
-  <testcase name="getAll_ShouldReturnTestEarthquakes" classname="com.example.earthquakes.service.EarthquakesServiceTest" time="0.003">
-    <system-out><![CDATA[
-=== @BeforeEach - Reset repository to initial state ===
-Repository now contains 2 earthquakes:
-  - ID: 'test-2', Magnitude: 6.5
-  - ID: 'test-1', Magnitude: 5.5
-
-=== Running getAll_ShouldReturnTestEarthquakes ===
+  <testcase name="create_WithAdminRole_ShouldCreateEarthquake" classname="com.example.earthquakes.controller.EarthquakeControllerJpaTest" time="0.024">
+    <system-out><![CDATA[2026-02-21T20:31:22.460+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Created HttpSession as SecurityContext is non-default
+2026-02-21T20:31:22.462+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=user, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[ROLE_ADMIN]]] to HttpSession [org.springframework.mock.web.MockHttpSession@4bff28e7]
+2026-02-21T20:31:22.463+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Securing POST /api/earthquakes
+2026-02-21T20:31:22.465+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=user, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[ROLE_ADMIN]]]
+2026-02-21T20:31:22.468+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Secured POST /api/earthquakes
+2026-02-21T20:31:22.469+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.example.earthquakes.controller.EarthquakeController.create(com.example.earthquakes.model.Earthquake); target is of class [com.example.earthquakes.controller.EarthquakeController]
+2026-02-21T20:31:22.469+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.example.earthquakes.controller.EarthquakeController.create(com.example.earthquakes.model.Earthquake); target is of class [com.example.earthquakes.controller.EarthquakeController]
 ]]></system-out>
   </testcase>
-  <testcase name="getById_WhenExists_ShouldReturnEarthquake" classname="com.example.earthquakes.service.EarthquakesServiceTest" time="0.002">
-    <system-out><![CDATA[
-=== @BeforeEach - Reset repository to initial state ===
-Repository now contains 2 earthquakes:
-  - ID: 'test-2', Magnitude: 6.5
-  - ID: 'test-1', Magnitude: 5.5
-
-=== Running getById_WhenExists_ShouldReturnEarthquake ===
-]]></system-out>
-  </testcase>
-  <testcase name="getById_WhenNotExists_ShouldThrowException" classname="com.example.earthquakes.service.EarthquakesServiceTest" time="0.003">
-    <system-out><![CDATA[
-=== @BeforeEach - Reset repository to initial state ===
-Repository now contains 2 earthquakes:
-  - ID: 'test-2', Magnitude: 6.5
-  - ID: 'test-1', Magnitude: 5.5
-
-=== Running getById_WhenNotExists_ShouldThrowException ===
+  <testcase name="delete_WithAdminRole_ShouldDelete" classname="com.example.earthquakes.controller.EarthquakeControllerJpaTest" time="0.024">
+    <system-out><![CDATA[2026-02-21T20:31:22.489+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Created HttpSession as SecurityContext is non-default
+2026-02-21T20:31:22.490+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=user, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[ROLE_ADMIN]]] to HttpSession [org.springframework.mock.web.MockHttpSession@6339e604]
+2026-02-21T20:31:22.491+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Securing DELETE /api/earthquakes/1
+2026-02-21T20:31:22.491+03:00 DEBUG 1172 --- [           main] w.c.HttpSessionSecurityContextRepository : Retrieved SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=user, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[ROLE_ADMIN]], Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[ROLE_ADMIN]]]
+2026-02-21T20:31:22.491+03:00 DEBUG 1172 --- [           main] o.s.security.web.FilterChainProxy        : Secured DELETE /api/earthquakes/1
+2026-02-21T20:31:22.495+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.example.earthquakes.controller.EarthquakeController.delete(java.lang.String); target is of class [com.example.earthquakes.controller.EarthquakeController]
+2026-02-21T20:31:22.497+03:00 DEBUG 1172 --- [           main] horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity com.example.earthquakes.controller.EarthquakeController.delete(java.lang.String); target is of class [com.example.earthquakes.controller.EarthquakeController]
 ]]></system-out>
   </testcase>
 </testsuite>

@@ -2,6 +2,7 @@ package com.example.earthquakes.config;
 
 import com.example.earthquakes.model.Earthquake;
 import com.example.earthquakes.repository.CommonRepository;
+import com.example.earthquakes.service.EarthquakesService;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -19,6 +20,14 @@ public class TestConfig {
     @Primary
     public CommonRepository<Earthquake> testEarthquakeRepository() {
         return new TestEarthquakeRepository();
+    }
+    
+    @Bean("earthquakesService")
+    @Primary
+    public EarthquakesService testEarthquakesService() {
+        // Используем конструктор с одним параметром
+        EarthquakesService service = new EarthquakesService(testEarthquakeRepository());
+        return service;
     }
 
     public static class TestEarthquakeRepository implements CommonRepository<Earthquake> {
