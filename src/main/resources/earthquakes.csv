@@ -1,0 +1,6 @@
+id,time,latitude,longitude,depth,magnitude,place,magType
+us1000abcd,2024-01-15 10:30:00,35.5,140.0,10.0,5.5,Tokyo Japan,mb
+us1000efgh,2024-01-16 11:45:00,40.2,142.5,15.0,6.2,Hokkaido Japan,mw
+us1000ijkl,2024-01-17 09:20:00,38.1,141.2,8.5,4.8,Sendai Japan,ml
+us1000mnop,2024-01-18 14:10:00,34.7,135.8,12.0,5.1,Osaka Japan,mb
+us1000qrst,2024-01-19 16:30:00,36.8,138.5,20.0,6.5,Nagano Japan,mw

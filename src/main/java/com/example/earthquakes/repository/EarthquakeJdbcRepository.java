@@ -25,12 +25,9 @@ public class EarthquakeJdbcRepository implements CommonRepository<Earthquake> {
     
     @Override
     public Earthquake save(Earthquake domain) {
-        String sql = "INSERT INTO earthquakes (id, time, latitude, longitude, depth, magnitude, place, magnitude_type) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?) " +
-                    "ON DUPLICATE KEY UPDATE " +
-                    "time = VALUES(time), latitude = VALUES(latitude), longitude = VALUES(longitude), " +
-                    "depth = VALUES(depth), magnitude = VALUES(magnitude), place = VALUES(place), " +
-                    "magnitude_type = VALUES(magnitude_type)";
+        // Используем MERGE вместо INSERT ... ON DUPLICATE KEY UPDATE
+        String sql = "MERGE INTO earthquakes KEY(id) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
         jdbcTemplate.update(sql,
             domain.getId(),
