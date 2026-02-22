@@ -46,8 +46,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(authz -> authz
                 // Используем AntPathRequestMatcher для явного указания типа
                 .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/api/sportstats/stats/**")).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/api/sportstats/**")).authenticated()
+                .requestMatchers(new AntPathRequestMatcher("/api/players/stats/**")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/api/players/**")).authenticated()
                 .anyRequest().authenticated()
             )
             .httpBasic(httpBasic -> httpBasic.realmName("Sportstats API"))
