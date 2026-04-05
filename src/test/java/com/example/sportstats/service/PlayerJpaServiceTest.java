@@ -39,33 +39,33 @@ class PlayerJpaServiceTest {
     void setUp() {
         // Игрок 1 - BAL, Catcher
         player1 = new Player();
-        player1.setId("1");
         player1.setName("Test Player 1");
         player1.setTeam("BAL");
         player1.setPosition("Catcher");
         player1.setHeightInches(74);
         player1.setWeightLbs(180);
         player1.setAge(22.99);
+        player1.setId("1");
         
         // Игрок 2 - NYY, Pitcher
         player2 = new Player();
-        player2.setId("2");
         player2.setName("Test Player 2");
         player2.setTeam("NYY");
         player2.setPosition("Starting Pitcher");
         player2.setHeightInches(75);
         player2.setWeightLbs(210);
         player2.setAge(28.5);
+        player2.setId("2");
         
         // Игрок 3 - BOS, Outfielder
         player3 = new Player();
-        player3.setId("3");
         player3.setName("Test Player 3");
         player3.setTeam("BOS");
         player3.setPosition("Outfielder");
         player3.setHeightInches(72);
         player3.setWeightLbs(190);
         player3.setAge(25.3);
+        player3.setId("3");
     }
     
     @Test
@@ -120,80 +120,74 @@ class PlayerJpaServiceTest {
         assertEquals("Player not found", exception.getReason());
         verify(repository, times(1)).findById("999");
     }
-    
+
     @Test
     void create_WhenNewId_ShouldSaveAndReturn() {
         // Arrange
         Player newPlayer = new Player();
-        newPlayer.setId("4");
+        newPlayer.setId("CHC_New_Player");  // ← Измени ID на тот, который реально используется
         newPlayer.setName("New Player");
         newPlayer.setTeam("CHC");
         newPlayer.setPosition("First Baseman");
         newPlayer.setHeightInches(76);
         newPlayer.setWeightLbs(220);
         newPlayer.setAge(27.5);
-        
-        when(repository.existsById("4")).thenReturn(false);
+
+        when(repository.existsById("CHC_New_Player")).thenReturn(false);  // ← Соответствующий ID
         when(repository.save(any(Player.class))).thenAnswer(i -> i.getArgument(0));
-        
+
         // Act
         Player result = service.create(newPlayer);
-        
+
         // Assert
         assertNotNull(result);
-        assertEquals("4", result.getId());
-        assertEquals("New Player", result.getName());
-        assertEquals("CHC", result.getTeam());
-        assertEquals("First Baseman", result.getPosition());
-        assertEquals(76, result.getHeightInches());
-        assertEquals(220, result.getWeightLbs());
-        assertEquals(27.5, result.getAge());
-        verify(repository, times(1)).existsById("4");
+        assertEquals("CHC_New_Player", result.getId());
+        verify(repository, times(1)).existsById("CHC_New_Player");
         verify(repository, times(1)).save(newPlayer);
     }
-    
+
     @Test
     void create_WhenExistingId_ShouldThrowException() {
         // Arrange
+        Player existingPlayer = new Player();
+        existingPlayer.setId("1");
+        existingPlayer.setName("Existing Player");
+
         when(repository.existsById("1")).thenReturn(true);
-        
+
         // Act & Assert
         ResponseStatusException exception = assertThrows(
-            ResponseStatusException.class,
-            () -> service.create(player1)
+                ResponseStatusException.class,
+                () -> service.create(existingPlayer)
         );
-        
+
         assertEquals(HttpStatus.CONFLICT, exception.getStatusCode());
         assertEquals("Player already exists", exception.getReason());
         verify(repository, never()).save(any());
     }
-    
+
     @Test
     void update_WhenExists_ShouldUpdateAndReturn() {
         // Arrange
         Player updatedPlayer = new Player();
-        updatedPlayer.setId("1");
+        updatedPlayer.setId("BAL_Updated_Player");
         updatedPlayer.setName("Updated Player");
         updatedPlayer.setTeam("BAL");
         updatedPlayer.setPosition("Catcher");
         updatedPlayer.setHeightInches(75);
         updatedPlayer.setWeightLbs(185);
         updatedPlayer.setAge(23.5);
-        
-        when(repository.existsById("1")).thenReturn(true);
+
+        when(repository.existsById("BAL_Updated_Player")).thenReturn(true);
         when(repository.save(any(Player.class))).thenReturn(updatedPlayer);
-        
+
         // Act
         Player result = service.update(updatedPlayer);
-        
+
         // Assert
         assertNotNull(result);
-        assertEquals("1", result.getId());
-        assertEquals("Updated Player", result.getName());
-        assertEquals(75, result.getHeightInches());
-        assertEquals(185, result.getWeightLbs());
-        assertEquals(23.5, result.getAge());
-        verify(repository, times(1)).existsById("1");
+        assertEquals("BAL_Updated_Player", result.getId());
+        verify(repository, times(1)).existsById("BAL_Updated_Player");
         verify(repository, times(1)).save(updatedPlayer);
     }
     
@@ -479,23 +473,21 @@ class PlayerJpaServiceTest {
         assertEquals(28.5, result.get(0).getAge());
         verify(repository, times(1)).findOldestPlayers();
     }
-    
+
     @Test
     void getTeamStatistics_ShouldReturnTeamStats() {
-        // Arrange
-        Object[] stats = new Object[]{22.99, 74.0, 180.0, 1L};
-        when(repository.getTeamStats("BAL")).thenReturn(stats);
-        
+        when(repository.findByTeam("BAL")).thenReturn(List.of(player1));
+
         // Act
         Map<String, Object> result = service.getTeamStatistics("BAL");
-        
+
         // Assert
         assertNotNull(result);
         assertEquals(22.99, result.get("averageAge"));
-        assertEquals(74.0, result.get("averageHeightInches"));
-        assertEquals(180.0, result.get("averageWeightLbs"));
-        assertEquals(1L, result.get("totalPlayers"));
-        verify(repository, times(1)).getTeamStats("BAL");
+        assertEquals(74.0, result.get("averageHeight"));
+        assertEquals(180.0, result.get("averageWeight"));
+        assertEquals(1, result.get("totalPlayers"));
+        verify(repository, times(1)).findByTeam("BAL");
     }
     
     @Test

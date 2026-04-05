@@ -1,4 +1,4 @@
-# **Sport Stats Application** ⚾
+# **Sport Stats Application**
 
 ## **О приложении**
 
@@ -8,7 +8,7 @@
 
 ---
 
-## **Функциональность** ✨
+## **Функциональность**
 
 ### **Основные возможности:**
 
@@ -54,7 +54,7 @@
 
 ---
 
-## **Архитектура** 🏗️
+## **Архитектура** 
 
 Приложение реализует многослойную архитектуру:
 
@@ -82,7 +82,7 @@
 
 ---
 
-## **Установка и запуск** 🚀
+## **Установка и запуск**
 
 ### **Предварительные требования**
 
@@ -128,7 +128,7 @@ cp src/main/resources/sport_teams_data.csv src/main/resources/players.csv
 
 ---
 
-## **API Endpoints** 📡
+## **API Endpoints**
 
 В режиме **`jdbc`** и**`jpa`** приложение запускается с пустой БД. Есть два способа создания БД:
 
@@ -141,24 +141,22 @@ cp src/main/resources/sport_teams_data.csv src/main/resources/players.csv
 
 #### **1. Получить информацию о текущем профиле**
 
-curl -u admin:admin http://localhost:8080/api/admin/csv/info
+`curl -u admin:admin http://localhost:8080/api/admin/csv/info`
 
 #### **2. Скачать шаблон CSV**
 
-curl -u admin:admin -O http://localhost:8080/api/admin/csv/template
+`curl -u admin:admin -O http://localhost:8080/api/admin/csv/template`
 
 #### **3. Проверить CSV файл без загрузки**
 
-curl -u admin:admin -X POST http://localhost:8080/api/admin/csv/validate \
-  -F "file=@players.csv"
+`curl -u admin:admin -X POST http://localhost:8080/api/admin/csv/validate -F "file=@src/main/resources/players.csv"`
 
 #### **4. Загрузить CSV файл в базу данных**
 
-curl -u admin:admin -X POST http://localhost:8080/api/admin/csv/upload \
-  -F "file=@players.csv"
+`curl -u admin:admin -X POST http://localhost:8080/api/admin/csv/upload -F "file=@src/main/resources/players.csv"`
 
 #### **5. Очистить базу данных**
-curl -u admin:admin -X DELETE http://localhost:8080/api/admin/csv/clear
+`curl -u admin:admin -X DELETE http://localhost:8080/api/admin/csv/clear`
 
 ### **Базовая информация**
 - **Базовый URL**: `http://localhost:8080/api`
@@ -339,7 +337,7 @@ curl -u user:password http://localhost:8080/api/players/stats/overall
 
 ---
 
-## **Примеры ответов** 📋
+## **Примеры ответов**
 
 ### **Успешный ответ при получении игрока**
 ```json
@@ -383,7 +381,7 @@ curl -u user:password http://localhost:8080/api/players/stats/overall
 
 ---
 
-## **H2 Console** 💾
+## **H2 Console**
 
 Приложение включает H2 Database Console для прямого доступа к базе данных:
 
@@ -392,9 +390,61 @@ curl -u user:password http://localhost:8080/api/players/stats/overall
 - **User Name**: `sa`
 - **Password**: (оставить пустым)
 
+### **Взаимодействие:**
+
+#### Показать список игроков: 
+
+`SELECT * FROM PLAYERS;`
+
+#### Показать список пользователей:
+
+`SELECT * FROM USERS;`
+
+#### Показать структуру таблицы:
+
+`SHOW COLUMNS FROM PLAYERS;`
+
+#### Поиск по команде
+
+`SELECT * FROM PLAYERS WHERE TEAM = 'BAL';`
+
+#### Статистика:
+
+```
+SELECT TEAM, COUNT(*) as COUNT
+
+FROM PLAYERS
+
+GROUP BY TEAM
+
+ORDER BY COUNT DESC;
+```
+
+#### Средний возраст игроков по командам:
+
+```
+SELECT TEAM, AVG(AGE) as AVG_AGE
+
+FROM PLAYERS
+
+GROUP BY TEAM;
+```
+
+#### Самые высокие игроки:
+
+```
+SELECT NAME, TEAM, HEIGHT_INCHES
+
+FROM PLAYERS
+
+ORDER BY HEIGHT_INCHES DESC
+
+LIMIT 10;
+```
+
 ---
 
-## **Тестирование** 🧪
+## **Тестирование**
 
 ### **Запуск всех тестов**
 ```bash
@@ -419,7 +469,7 @@ mvn test -Dtest=PlayerControllerJpaTest
 
 ---
 
-## **Структура проекта** 📁
+## **Структура проекта**
 
 ```
 src/
@@ -466,21 +516,21 @@ src/
 
 ---
 
-## **Профили запуска** 🔄
+## **Профили запуска**
 
 ### **Сравнение режимов работы**
 
 | Характеристика | CSV режим | JDBC режим | JPA режим |
-|----------------|-----------|------------|-----------|
+|----------------|---------|----------|----------|
 | **Хранение** | In-memory | H2 Database | H2 Database |
-| **Скорость** | ⚡ Очень быстро | 🐢 Средне | 🐢 Средне |
-| **Персистентность** | ❌ Нет | ✅ Да | ✅ Да |
-| **SQL запросы** | ❌ Нет | ✅ Ручные | 🤖 Авто |
+| **Скорость** |  Очень быстро |  Средне |  Средне |
+| **Персистентность** |  Нет |  Да |  Да |
+| **SQL запросы** |  Нет |  Ручные |  Авто |
 | **Инициализация** | Из CSV файла | Из schema.sql | JPA auto |
 
 ---
 
-## **Устранение неполадок** 🔧
+## **Устранение неполадок** 
 
 ### **Приложение не запускается**
 ```bash
@@ -518,7 +568,7 @@ curl -u admin:admin -X POST http://localhost:8080/api/players ...
 
 ---
 
-## **Заключение** 🎯
+## **Заключение**
 
 **Sport Stats Application** демонстрирует:
 - Полноценное REST API с CRUD операциями
@@ -533,6 +583,8 @@ curl -u admin:admin -X POST http://localhost:8080/api/players ...
 
 ---
 
-**Автор**: Студент-разработчик на Java  
-**Версия**: 1.0.0  
+**Автор**: Жилкина Валерия Дмитриевна
+
+**Версия**: 1.0.0
+
 **Лицензия**: Учебный проект

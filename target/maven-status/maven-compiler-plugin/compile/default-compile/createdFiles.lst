@@ -14,6 +14,7 @@ com/example/sportstats/repository/PlayerJdbcRepository$PlayerRowMapper.class
 com/example/sportstats/repository/PlayerJpaRepository.class
 com/example/sportstats/util/CsvParser.class
 com/example/sportstats/repository/CommonRepository.class
+com/example/sportstats/config/SwaggerConfig.class
 com/example/sportstats/service/PlayerService.class
 com/example/sportstats/repository/CsvRepository.class
 com/example/sportstats/service/UserDetailsServiceImpl.class

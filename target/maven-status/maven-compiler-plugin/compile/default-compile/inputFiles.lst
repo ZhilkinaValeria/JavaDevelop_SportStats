@@ -10,6 +10,7 @@
 /Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/sportstats/repository/PlayerJpaRepository.java
 /Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/sportstats/config/SecurityConfig.java
 /Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/sportstats/service/PlayerService.java
+/Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/sportstats/config/SwaggerConfig.java
 /Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/sportstats/SportStatsApplication.java
 /Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/sportstats/service/PlayerJpaService.java
 /Users/Andrei/Desktop/TUMGU/JavaDevelopment/JavaProject/src/main/java/com/example/sportstats/util/CsvParser.java

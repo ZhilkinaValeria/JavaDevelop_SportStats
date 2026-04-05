@@ -153,7 +153,67 @@ public class PlayerController {
         }
         return playerService.getTeamStatistics(teamCode);
     }
-    
+
+    // Статистика по позициям
+    @GetMapping("/stats/positions")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public Map<String, Long> getPlayersCountByPosition() {
+        if (isJpaMode()) {
+            return playerJpaService.getPlayersCountByPosition();
+        }
+        return playerService.getPlayersCountByPosition();
+    }
+
+    // Статистика роста (мин/макс)
+    @GetMapping("/stats/height-stats")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public Map<String, Integer> getHeightStats() {
+        if (isJpaMode()) {
+            return playerJpaService.getHeightStats();
+        }
+        return playerService.getHeightStats();
+    }
+
+    // Статистика веса (мин/макс)
+    @GetMapping("/stats/weight-stats")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public Map<String, Integer> getWeightStats() {
+        if (isJpaMode()) {
+            return playerJpaService.getWeightStats();
+        }
+        return playerService.getWeightStats();
+    }
+
+    // Самые молодые
+    @GetMapping("/youngest")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public List<Player> getYoungestPlayers() {
+        if (isJpaMode()) {
+            return playerJpaService.getYoungestPlayers();
+        }
+        return playerService.getYoungestPlayers();
+    }
+
+    // Самые возрастные
+    @GetMapping("/oldest")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public List<Player> getOldestPlayers() {
+        if (isJpaMode()) {
+            return playerJpaService.getOldestPlayers();
+        }
+        return playerService.getOldestPlayers();
+    }
+
+    // Игроки с высоким BMI
+    @GetMapping("/high-bmi")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public List<Player> getPlayersWithHighBmi(@RequestParam(defaultValue = "30") Double threshold) {
+        if (isJpaMode()) {
+            return playerJpaService.getPlayersWithHighBmi(threshold);
+        }
+        return playerService.getPlayersWithHighBmi(threshold);
+    }
+
     // Топ-листы
     @GetMapping("/top10/tallest")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")

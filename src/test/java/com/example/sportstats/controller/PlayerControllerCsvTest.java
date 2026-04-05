@@ -1,7 +1,6 @@
 package com.example.sportstats.controller;
 
-import com.example.sportstats.config.TestConfig;
-import com.example.sportstats.config.TestSecurityConfig;
+import com.example.sportstats.config.TestSecurityConfig;  // Убери TestConfig
 import com.example.sportstats.model.Player;
 import com.example.sportstats.service.PlayerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,67 +14,76 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import com.example.sportstats.service.PlayerJpaService;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(PlayerController.class)
-@ActiveProfiles("test")
-@Import({TestConfig.class, TestSecurityConfig.class})
+@ActiveProfiles({"test"})
+@Import({TestSecurityConfig.class})  // ← Убрал TestConfig
 class PlayerControllerCsvTest {
 
     @Autowired
     private MockMvc mockMvc;
-    
+
     @Autowired
     private ObjectMapper objectMapper;
-    
+
     @MockBean(name = "playerService")
     private PlayerService playerService;
-    
-    // JPA сервис не мокаем - его нет в контексте
-    
+
     private Player newPlayer;
     private Player testPlayer1;
     private Player testPlayer2;
-    
+
     @BeforeEach
     void setUp() {
         // Создаем тестового игрока для создания
         newPlayer = new Player();
-        newPlayer.setId("test-3");
         newPlayer.setName("New Test Player");
         newPlayer.setTeam("BAL");
         newPlayer.setPosition("Outfielder");
         newPlayer.setHeightInches(72);
         newPlayer.setWeightLbs(185);
         newPlayer.setAge(24.5);
-        
+        newPlayer.setId("test-3");
+
         // Создаем тестовых игроков для списка
         testPlayer1 = new Player();
-        testPlayer1.setId("test-1");
         testPlayer1.setName("Test Player 1");
         testPlayer1.setTeam("BAL");
         testPlayer1.setPosition("Catcher");
         testPlayer1.setHeightInches(74);
         testPlayer1.setWeightLbs(180);
         testPlayer1.setAge(22.99);
-        
+        testPlayer1.setId("test-1");
+
         testPlayer2 = new Player();
-        testPlayer2.setId("test-2");
         testPlayer2.setName("Test Player 2");
         testPlayer2.setTeam("NYY");
         testPlayer2.setPosition("Pitcher");
         testPlayer2.setHeightInches(75);
         testPlayer2.setWeightLbs(210);
         testPlayer2.setAge(28.5);
+        testPlayer2.setId("test-2");
+
+        // Настройка моков
+        when(playerService.create(any(Player.class))).thenReturn(newPlayer);
+        when(playerService.getById("test-1")).thenReturn(testPlayer1);
+        when(playerService.getAll()).thenReturn(Arrays.asList(testPlayer1, testPlayer2));
+        when(playerService.getPlayersByTeam("BAL")).thenReturn(Arrays.asList(testPlayer1));
+        when(playerService.getPlayersByPosition("Catcher")).thenReturn(Arrays.asList(testPlayer1));
+        when(playerService.getAverageAge()).thenReturn(25.5);
+        when(playerService.getAverageHeight()).thenReturn(73.5);
+        when(playerService.getAverageWeight()).thenReturn(195.0);
+        doNothing().when(playerService).delete("test-1");
     }
     
     @Test

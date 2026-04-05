@@ -54,41 +54,41 @@ class PlayerControllerJpaTest {
     void setUp() {
         // Создаем тестового игрока для создания
         newPlayer = new Player();
-        newPlayer.setId("test-3");
         newPlayer.setName("New Test Player");
         newPlayer.setTeam("BAL");
         newPlayer.setPosition("Outfielder");
         newPlayer.setHeightInches(72);
         newPlayer.setWeightLbs(185);
         newPlayer.setAge(24.5);
+        newPlayer.setId("test-3");
         
         // Создаем тестовых игроков для списка
         testPlayer1 = new Player();
-        testPlayer1.setId("test-1");
         testPlayer1.setName("Test Player 1");
         testPlayer1.setTeam("BAL");
         testPlayer1.setPosition("Catcher");
         testPlayer1.setHeightInches(74);
         testPlayer1.setWeightLbs(180);
         testPlayer1.setAge(22.99);
+        testPlayer1.setId("test-1");
         
         testPlayer2 = new Player();
-        testPlayer2.setId("test-2");
         testPlayer2.setName("Test Player 2");
         testPlayer2.setTeam("NYY");
         testPlayer2.setPosition("Starting Pitcher");
         testPlayer2.setHeightInches(75);
         testPlayer2.setWeightLbs(210);
         testPlayer2.setAge(28.5);
+        testPlayer2.setId("test-2");
         
         testPlayer3 = new Player();
-        testPlayer3.setId("test-4");
         testPlayer3.setName("Test Player 3");
         testPlayer3.setTeam("BOS");
         testPlayer3.setPosition("Outfielder");
         testPlayer3.setHeightInches(72);
         testPlayer3.setWeightLbs(190);
         testPlayer3.setAge(25.3);
+        testPlayer3.setId("test-4");
     }
     
     @Test

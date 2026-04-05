@@ -17,13 +17,11 @@ import java.util.Map;
 public class TestConfig {
 
     @Bean
-    @Primary
     public CommonRepository<Player> testPlayerRepository() {
         return new TestPlayerRepository();
     }
     
     @Bean("playerService")
-    @Primary
     public PlayerService testPlayerService() {
         // Используем конструктор с одним параметром
         PlayerService service = new PlayerService(testPlayerRepository());
@@ -70,6 +68,9 @@ public class TestConfig {
         
         public TestPlayerRepository(boolean withCustomData) {
             // Пустой конструктор для возможности создания без данных
+        }
+        public void clear() {
+            storage.clear();
         }
 
         @Override
